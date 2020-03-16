@@ -23,12 +23,12 @@ class MainActivity : AppCompatActivity() {
         // Data binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
-        val viewModel: MainViewModel by viewModels()
-        this.viewModel = viewModel
         initViewModel()
     }
 
     private fun initViewModel() {
+        val viewModel: MainViewModel by viewModels()
+        this.viewModel = viewModel
         viewModel.coolResponse.observe(this, Observer {
             binding.ourText.setText(it.result.get(0).country)
         })
